@@ -1,0 +1,247 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+    	<title>版杀天庭辅助工具</title>
+    	<link href="./css/bootstrap.css" rel="stylesheet">
+    	<link href="./css/application.css" rel="stylesheet">
+    	<link href="./css/jquery-ui-1.10.0.custom.css" rel="stylesheet">
+	</head>
+	<body>
+    <div class="navbar navbar-inverse navbar-fixed-top">
+      <div class="navbar-inner">
+        <div class="container">
+          <span id="brand" class="brand">版杀天庭辅助工具</span>
+        </div>
+      </div>
+    </div>
+
+    <div class="container-fluid">
+      <div class="row-fluid">
+        <div id="menu-region" class="span2" style="padding-left:90px;padding-top:30px;">
+          <!--Sidebar content-->
+          <label><button id="role" class="btn btn-large btn-inverse" type="button" onclick="role()">
+            <i class="icon-repeat icon-white"></i> 抽身份
+          </button></label>
+          <label><button id="force" class="btn btn-large btn-info" type="button" onclick="force()">
+            <i class="icon-refresh icon-white"></i> 抽势力
+          </button></label>
+          <label><button id="numberset" class="btn btn-large btn-primary" type="button" onclick="number()">
+            <i class="icon-flag icon-white"></i> 设数字
+          </button></label>
+          <label><button id="injure" class="btn btn-large btn-success" type="button" onclick="injure()">
+            <i class="icon-time icon-white"></i> 受伤判
+          </button></label>
+          <label><button id="broadcast" class="btn btn-large btn-warning" type="button" onclick="broadcast()">
+            <i class="icon-file icon-white"></i> 写公告
+          </button></label>
+          <div class="btn-group">
+            <a class="btn dropdown-toggle btn-large btn-danger" data-toggle="dropdown" href="#">
+              <i class="icon-fire icon-white"></i> 结算
+              <span class="caret"></span>
+            </a>
+            <ul class="dropdown-menu">
+              <!-- dropdown menu links -->
+              <li class="disabled"><a tabindex="-1" href="#">三国版杀</a></li>
+              <li class="disabled"><a tabindex="-1" href="#">群雄版杀</a></li>
+              <li class="disabled"><a tabindex="-1" href="#">战国版杀</a></li>
+              <li class="divider"></li>
+              <li class="disabled"><a tabindex="-1" href="#">其他版杀</a></li>
+            </ul>
+          </div>
+          <!--Sidebar content ends-->
+        </div>
+
+        <div class="span10">
+          <!--Body content-->
+          <div id="main-region" class="container">
+            <p>请选择您需要的功能。</p>
+          </div>
+
+          <div id="error-region" class="container">
+            <p>无法正常运行，请联系制作人员。</p>
+          </div>
+
+          <div id="role-region" class="container">
+            <fieldset>
+              <legend>抽身份</legend>
+              <label>玩家数量</label>
+              <input type="text" id="role-num"><label></label>
+              <button class="btn" id="role-num-btn" onclick="roleNumChange()">改变玩家数量</button>
+              <br/>
+            </fieldset>
+            <div id="role-id-region" class="container" style="padding-top:30px;">
+              <table class="table table-condensed">
+                <tr>
+                  <td>玩家ID列表</td><td>身份列表</td>
+                  <td>
+                    <button class="btn" id="role-id-start-btn" onclick="roleIdStart()">
+                      <i class="icon-play icon-black"></i> 开始抽
+                    </button>
+                  </td>
+                </tr>
+                <tr>
+                  <td>
+                    <textarea id="id-area" placeholder="每行输入一个" class="text"></textarea>
+                  </td>
+                  <td>
+                    <textarea id="role-area" placeholder="每行输入一个" class="text"></textarea>
+                  </td>
+                  <td>
+                    <div class="btn-group">
+                      <a class="btn dropdown-toggle" data-toggle="dropdown" href="#">添加常用
+                        <span class="caret"></span>
+                      </a>
+                      <ul class="dropdown-menu" role="menu" aria-labelledby="dLabel">
+                        <li><a tabindex="-1" href="#" onclick="readRoles(0)">一只在野</a></li>
+                        <li class="dropdown-submenu">
+                          <a tabindex="-1" href="#">三国版杀</a>
+                          <ul class="dropdown-menu">
+                            <li><a tabindex="-1" href="#" onclick="readRoles(1)">魏国</a></li>
+                            <li><a tabindex="-1" href="#" onclick="readRoles(2)">蜀国</a></li>
+                            <li><a tabindex="-1" href="#" onclick="readRoles(3)">吴国</a></li>
+                          </ul>
+                        </li>
+                        <li class="dropdown-submenu">
+                          <a tabindex="-1" href="#">群雄版杀</a>
+                          <ul class="dropdown-menu">
+                            <li><a tabindex="-1" href="#" onclick="readRoles(5)">曹操</a></li>
+                            <li><a tabindex="-1" href="#" onclick="readRoles(6)">刘备</a></li>
+                            <li><a tabindex="-1" href="#" onclick="readRoles(7)">孙坚</a></li>
+                            <li><a tabindex="-1" href="#" onclick="readRoles(8)">公孙瓒</a></li>
+                            <li><a tabindex="-1" href="#" onclick="readRoles(9)">袁绍</a></li>
+                            <li><a tabindex="-1" href="#" onclick="readRoles(10)">刘表</a></li>
+                            <li><a tabindex="-1" href="#" onclick="readRoles(11)">董卓</a></li>
+                            <li><a tabindex="-1" href="#" onclick="readRoles(12)">马腾</a></li>
+                            <li><a tabindex="-1" href="#" onclick="readRoles(13)">刘焉</a></li>
+                          </ul>
+                        </li>
+                        <li class="dropdown-submenu">
+                          <a tabindex="-1" href="#">战国版杀</a>
+                          <ul class="dropdown-menu">
+                            <li><a tabindex="-1" href="#" onclick="readRoles(14)">织田</a></li>
+                            <li><a tabindex="-1" href="#" onclick="readRoles(15)">德川</a></li>
+                            <li><a tabindex="-1" href="#" onclick="readRoles(16)">丰臣</a></li>
+                            <li><a tabindex="-1" href="#" onclick="readRoles(17)">武田</a></li>
+                            <li><a tabindex="-1" href="#" onclick="readRoles(18)">上杉</a></li>
+                            <li><a tabindex="-1" href="#" onclick="readRoles(19)">北条</a></li>
+                            <li><a tabindex="-1" href="#" onclick="readRoles(20)">毛利</a></li>
+                          </ul>
+                        </li>
+                        <li><a tabindex="-1" href="#" onclick="readRoles(4)">EX</a></li>
+                      </ul>
+                    </div>
+                  </td>
+                </tr>
+              </table>
+            </div>
+            <div id="role-id-result-region" class="container" style="padding-top:30px;">
+              <table id="role-id-result-table" class="table table-striped">
+              </table>
+            </div>
+          </div>
+          
+          <div id="force-region" class="container">
+            <fieldset>
+              <legend>抽势力</legend>
+              <label>也可用于玩家抽在野角色、奇数偶数拼点</label><label>&nbsp</label>
+              <label>所有势力列表录入（在野列表录入、奇数偶数结果录入）</label>
+              <input type="text" id="force-list" placeholder="不同势力请以空格间隔">
+              <label>参加抽取的玩家列表录入</label>
+              <input type="text" id="force-id-list" placeholder="不同玩家ID请以空格间隔">
+              <label class="checkbox">
+                <input type="checkbox" id="force-checkbox" checked="true"> 无法均匀分配时向下取整
+              </label>
+              <button class="btn" id="force-btn" onclick="forceDecide()"><i class="icon-play icon-black"></i> 开始抽</button>
+            </fieldset>
+            <div id="force-result-region" style="padding-top:30px;">
+              <fieldset>
+                <label id="force-result-title"> </label>
+                <label id="force-result-content"> </label>
+              </fieldset>
+            </div>
+          </div>
+          
+          <div id="number-set-region" class="container">
+            <fieldset>
+              <legend>设数字</legend>
+              <table>
+                <tr><td>
+                  <button class="btn" id="number-set-btn" onclick="numberSet()"><i class="icon-play icon-black"></i> 生成数字</button>
+                </td></tr>
+                <tr><td>
+                  <textarea id="number-set-input" rows="5" placeholder="选项以空格间隔开"></textarea>
+                </td></tr>
+              </table>
+            </fieldset>
+            <div id="number-set-result-region" style="padding-top:30px;">
+              <fieldset>
+                <label id="number-set-result-content"> </label>
+              </fieldset>
+            </div>
+          </div>
+
+          <div id="injure-region" class="container">
+            <fieldset>
+              <legend>受伤判</legend>
+              <table><tr>
+                <td style="padding: 20px;"><label class="radio">
+                    <input type="radio" id="injureRadios" name="injureRadios" value="1" checked>第一天伤判
+                </label></td>
+                <td style="padding: 20px;"><label class="radio">
+                    <input type="radio" id="injureRadios" name="injureRadios" value="2">第二天伤判
+                </label></td>
+                <td style="padding: 20px;"><label class="radio">
+                    <input type="radio" id="injureRadios" name="injureRadios" value="3">不可痊愈伤判
+                </label></td>
+                <td style="padding: 20px;"><label class="radio">
+                    <input type="radio" id="injureRadios" name="injureRadios" value="4">不可死亡伤判
+                </label></td>
+              </tr></table>
+              <button class="btn" id="injure-init-btn" onclick="injureInit()"><i class="icon-refresh icon-black"></i> 初始化伤判</button>
+            </fieldset>
+            <div id="injure-input-region" style="padding-top:30px;">
+              <fieldset>
+                <label>本次伤判流水号：</label>
+                <label><input type="text" id="serialNumber" disabled></label>
+                <input type="text" id="injureInput" placeholder="请输入一个0-9的整数">
+                <span class="help-inline">输入内容只有第一位有效</span>
+                <label><button class="btn" id="injure-btn" onclick="injureDecide()"><i class="icon-play icon-black"></i> 开始伤判
+                </button></label>
+              </fieldset>
+            </div>
+            <div id="injure-result-region" style="padding-top:30px;">
+              <fieldset>
+              </fieldset>
+            </div>
+          </div>
+
+          <div id="broadcast-region" class="container">
+            <fieldset>
+              <legend>写公告</legend>
+              <div class="row-fluid">
+                <div class="span5">
+                <p>嗯，该怎么写呢...</p>
+                <textarea id="broadcast-input-area" rows="10" placeholder="在这里写公告" class="text"></textarea>
+                </div>
+                <div class="span5">
+                  <img src="./img/broadcast.gif" style="padding-top:30px;"/>
+                </div>
+              </div>
+            </fieldset>
+          </div>
+
+          <!--Body content ends-->
+        </div>
+      </div>
+    </div>
+
+    <script src="./js/jquery.js"></script>
+    <script src="./js/bootstrap.js"></script>
+    <script src="./js/spin.js"></script>
+    <script src="./js/spin.jquery.js"></script>
+    <script src="./js/data/roles.js"></script>
+    <script src="./js/util.js"></script>
+    <script src="./js/app.js"></script>
+	</body>
+</html>
